@@ -3,9 +3,11 @@
       <div class="d-flex">
         <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
         <!-- sidebar-toggle-->
-        <a class="logo-horizontal " href="index.html">
-          <img src="../assets/images/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
-          <img src="../assets/images/brand/logo-3.png" class="header-brand-img light-logo1" alt="logo">
+        <a class="logo-horizontal" href="{{ url('administrator/dashboard') }}">
+          <img src="{{ asset('assets/admin/images/brand/logo.png') }}" class="header-brand-img desktop-logo"
+            alt="logo">
+          <img src="{{ asset('assets/admin/images/brand/logo-3.png') }}" class="header-brand-img light-logo1"
+            alt="logo">
         </a>
         <!-- LOGO -->
 
@@ -20,7 +22,7 @@
                 <!-- SIDE-MENU -->
                 <div class="dropdown d-flex profile-1">
                   <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
-                    <img src="../assets/images/users/21.jpg" alt="profile-user"
+                    <img src="{{ asset('assets/admin/images/users/21.jpg') }}" alt="profile-user"
                       class="avatar  profile-user brround cover-image">
                   </a>
                   <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -34,9 +36,13 @@
                     <a class="dropdown-item" href="profile.html">
                       <i class="dropdown-icon fe fe-user"></i> Profile
                     </a>
-                    <a class="dropdown-item" href="login.html">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                      onclick="event.preventDefault();    document.getElementById('logout-form').submit();">
                       <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                    </form>
                   </div>
                 </div>
               </div>
